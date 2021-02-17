@@ -72,12 +72,6 @@
     <ClCompile Include="02-10.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="2. 1000이하의 소수 개수 구하기.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="2. 매크로 실습.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="02-11.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -87,5 +81,22 @@
     <ClCompile Include="02-13.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="IntStack.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="04. 스택 및 헤더파일 실습.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="02. 매크로 실습.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="02. 1000이하의 소수 개수 구하기.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IntStack.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
