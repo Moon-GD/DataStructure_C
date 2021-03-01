@@ -19,10 +19,10 @@ int LeftEnque(Deck* deck, int x) {
 	}
 
 	deck->num++;
-	deck->que[--deck->front] = x;
-	if (deck->front <= deck->max) {
-		deck->rear += deck->max;
+	if (deck->front <= 0) {
+		deck->front += deck->max;
 	}
+	deck->que[--deck->front] = x;
 
 	return 0;
 }
@@ -33,11 +33,12 @@ int RightEnque(Deck* deck, int x) {
 		return -2;
 	}
 
-	deck->num++;
-	deck->que[deck->rear++] = x;
+	deck->que[deck->rear] = x;
+	deck->num++, deck->rear++;
 	if (deck->rear >= deck->max) {
 		deck->rear %= deck->max;
 	}
+
 	return 0;
 }
 
@@ -47,11 +48,12 @@ int LeftDeque(Deck* deck, int* x) {
 		return -1;
 	}
 
-	deck->num--;
 	*x = deck->que[deck->front++];
 	if (deck->front >= deck->max) {
 		deck->front %= deck->max;
 	}
+	deck->num--;
+
 	return 0;
 }
 
@@ -61,11 +63,13 @@ int RightDeque(Deck* deck, int* x) {
 		return -2;
 	}
 
-	deck->num--;
-	*x = deck->que[--deck->rear];
-	if (deck->rear <= 0) {
+	if (--deck->rear <= 0) {
 		deck->rear += deck->max;
 	}
+
+	*x = deck->que[deck->rear];
+	deck->num--;
+
 	return 0;
 }
 

@@ -32,6 +32,5 @@ int RightPeek(Deck* deck, int* x);
 // µ¦ Ãâ·Â
 void Print(Deck* deck);
 
-
 // µ¦ Á¾·á
 void Terminate(Deck* deck);
