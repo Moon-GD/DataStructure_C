@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<string.h>
 #include "Member.h"
@@ -28,6 +29,6 @@ Member ScanMember(const char* message, int sw) {
 	Member temp;
 	printf("%s하는 데이터를 입력하세요.\n", message);
 	if (sw & MEMBER_NO) { printf("번호 : "); scanf_s("%d", &temp.no); }
-	if (sw & MEMBER_NAME) { printf("이름 : "); scanf_s("%s", temp.name); }
+	if (sw & MEMBER_NAME) { printf("이름 : "); scanf_s("%s", temp.name, 20); }
 	return temp;
 }

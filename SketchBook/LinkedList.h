@@ -15,7 +15,7 @@ typedef struct {
 void Initialize(List* list);
 
 // 함수 compare로 x와 같은 노드를 검색
-Node* search(List* list, const Member* x, int compare(const Member* x, const Member* y));
+Node* Search(List* list, const Member* x, int compare(const Member* x, const Member* y));
 
 // 머리에 노드를 삽입
 void InsertFront(List* list, const Member* x);

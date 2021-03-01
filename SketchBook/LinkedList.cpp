@@ -22,7 +22,7 @@ void Initialize(List* list) {
 }
 
 // 함수 compare로 x와 같은 노드를 검색
-Node* search(List* list, const Member* x, int compare(const Member* x, const Member* y)) {
+Node* Search(List* list, const Member* x, int compare(const Member* x, const Member* y)) {
 	Node* ptr = list->head;
 	while (ptr != NULL) {
 		if (compare(&ptr->data, x) == 0) {
@@ -36,7 +36,7 @@ Node* search(List* list, const Member* x, int compare(const Member* x, const Mem
 
 // 머리에 노드를 삽입
 void InsertFront(List* list, const Member* x) {
-	Node* ptr;
+	Node* ptr = list->head;
 	list->head = list->crnt = AllocNode();
 	SetNode(list->head, x, ptr);
 }
@@ -47,7 +47,7 @@ void InsertRear(List* list, const Member* x) {
 		InsertFront(list, x);
 	}
 	else {
-		Node* ptr;
+		Node* ptr = list->head;
 		while (ptr->next != NULL) {
 			ptr = ptr->next;
 		}
@@ -66,12 +66,12 @@ void RemoveFront(List* list) {
 // 꼬리 노드를 삭제
 void RemoveRear(List* list) {
 	if (list->head != NULL) {
-		if (list->head->next = NULL) {
+		if (list->head->next == NULL) {
 			RemoveFront(list);
 		}
 		else {
 			Node* ptr = list->head;
-			Node* pre;
+			Node* pre = NULL;
 			while (ptr->next != NULL) {
 				pre = ptr;
 				ptr = ptr->next;
@@ -82,34 +82,66 @@ void RemoveRear(List* list) {
 		}
 	}
 	else {
-		printf("삭제할 노드가 없습니다.");
+		printf("삭제할 노드가 없습니다.\n");
 	}
 }
 
 // 선택한 노드를 삭제
 void RemoveCurrent(List* list) {
-	Node* ptr = list->head;
-	while (ptr->next != list->crnt) {
-		ptr = ptr->next;
+	if (list->head != NULL) {
+		if (list->crnt == list->head)
+			RemoveFront(list);
+		else {
+			Node* ptr = list->head;
+			while (ptr->next != list->crnt) {
+				ptr = ptr->next;
+			}
+			ptr->next = list->crnt->next;
+			free(list->crnt);
+			list->crnt = ptr;
+		}
 	}
-	ptr->next = list->crnt->next;
-	free(list->crnt);
-	list->crnt = ptr;
 }
 
 // 모든 노드를 삭제
 void Clear(List* list) {
-
+	while (list->head != NULL) {
+		RemoveFront(list);
+	}
+	// list->crnt = NULL;
 }
 
 // 선택한 노드의 데이터를 출력
-void PrintCurrent(const List* list);
+void PrintCurrent(const List* list) {
+	if (list->crnt == NULL) {
+		printf("출력할 데이터가 없습니다.\n");
+	}
+	else {
+		PrintMember(&list->crnt->data);
+	}
+}
 
 // 선택한 노드의 데이터를 출력 (줄 바꿈 문자 포함)
-void PrintLnCurrent(const List* list);
+void PrintLnCurrent(const List* list) {
+	PrintCurrent(list);
+	putchar('\n');
+}
 
 // 모든 노드의 데이터를 리스트 순서대로 출력
-void Print(const List* list);
+void Print(const List* list) {
+	if (list->head == NULL) {
+		printf("출력할 노드가 없습니다.\n");
+	}
+	else {
+		Node* ptr = list->head;
+		while (ptr != NULL) {
+			PrintLnMember(&ptr->data);
+			ptr = ptr->next;
+		}
+	}
+}
 
 // 연결 리스트 종료
-void Terminate(List* list);
+void Terminate(List* list) {
+	Clear(list);
+}
