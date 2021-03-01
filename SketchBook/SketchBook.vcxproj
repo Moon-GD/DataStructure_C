@@ -238,6 +238,8 @@
     <ClCompile Include="IntStack.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Member.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Deck.h">
@@ -252,6 +254,8 @@
     <ClInclude Include="IntStack.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Member.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
